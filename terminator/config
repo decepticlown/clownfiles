@@ -1,0 +1,27 @@
+[global_config]
+  extra_styling = False
+  tab_position = hidden
+  title_transmit_bg_color = "#2e3436"
+  title_inactive_fg_color = "#ffffff"
+  title_inactive_bg_color = "#555753"
+  inactive_color_offset = 0.6058519793459552
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#ffffff"
+    font = Iosevka Expanded 10
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    palette = "#2e3436:#a31604:#447241:#c1951a:#425387:#965d98:#06989a:#d3d7cf:#555753:#c60001:#27a343:#d5a30e:#4a5a8d:#893c8c:#12bccb:#eeeeec"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
