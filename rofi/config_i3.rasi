@@ -1,0 +1,10 @@
+configuration {
+	font: "Iosevka Extended 10";
+	show-icons: true;
+	sidebar-mode: false;
+	theme: "themes/acp_i3.rasi";
+	display-window: "";
+	display-run: "";
+	display-ssh: "~#";
+	display-drun: "";
+}
