@@ -29,25 +29,25 @@ font pango:iosevka bold 10
 #manual lock screen
 bindsym $mod+l exec "~/.config/i3/scripts/lock.sh"
 #inactivity lock
-exec --no-startup-id xautolock -time 5 -locker "~/.config/i3/scripts/lock.sh"
+#exec --no-startup-id xautolock -time 5 -locker "~/.config/i3/scripts/lock.sh"
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 2 set Master playback 5db+ && $refresh_i3status && dunstify -r 10022 -a Volume $(awk -F"[][]" '/Mono:/ { print $2 }' <(amixer -c 2 sget Master)) -u low
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 2 set Master playback 5db- && $refresh_i3status && dunstify -r 10022 -a Volume $(awk -F"[][]" '/Mono:/ { print $2 }' <(amixer -c 2 sget Master)) -u low
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status 
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -55,8 +55,11 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/config_i3.rasi
 
+#bindsym $mod+d exec "dmenu_run -nf '#BABABA' -nb '#3A3A3A' -sb '#06D6A0' -sf '#3A3A3A' -fn 'monospace-10' -p 'dmenu prompt &gt;' &"
+#
+#
 # change focus
 #bindsym $mod+j focus left
 #bindsym $mod+k focus down
@@ -178,17 +181,17 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # class                 border  bground text    indicator child_border
-client.focused          #202020 #202020 #BABBD6 #2D2D2D   #202020
-client.focused_inactive #292929 #292929 #BABBD6 #2D2D2D   #292929
-client.unfocused        #292929 #292929 #BABBD6 #2D2D2D   #292929
-client.urgent           #2D2D2D #2D2D2D #F2777A #2D2D2D   #2D2D2D
-client.placeholder      #2D2D2D #2D2D2D #BABBD6 #2D2D2D   #2D2D2D
+client.focused          #00FFFF #000000 #00FFFF #00FFFF   #000000
+client.focused_inactive #000000 #000000 #AAAAAA #AAAAAA   #000000
+client.unfocused        #000000 #000000 #888888 #888888   #000000
+client.urgent           #FF0000 #000000 #FF0000 #000000   #FF0000
+client.placeholder      #000000 #000000 #FFFFFF #FFFFFF   #000000
 
-client.background       #FAFAFA
-
+client.background       #000000
 bar {
     separator_symbol " - "
     position top
@@ -198,36 +201,48 @@ bar {
     #modifier $mod+Shift
 
 colors {
-    background #2D2D2D
-    statusline #929292
-    separator  #4D4D4D
+	background #000000
+    statusline #FFFFFF
+    separator  #AAAAAA
 
-    focused_workspace  #2D2D2D #2D2D2D #BABBD6
-    active_workspace   #2D2D2D #2D2D2D #BABBD6
-    inactive_workspace #2D2D2D #2D2D2D #5D5D5D
-    urgent_workspace   #2D2D2D #2D2D2D #F2777A
-    binding_mode       #2D2D2D #2D2D2D #BABBD6
-  }
+    focused_workspace  #000000 #000000 #00FFFF
+    active_workspace   #000000 #000000 #FFFFFF
+    inactive_workspace #000000 #000000 #888888
+    urgent_workspace   #000000 #000000 #FF0000
+    binding_mode       #000000 #000000 #FFFF00
+      }
 }
 
-#bindsym $mod+d exec "dmenu_run -nf '#BABABA' -nb '#3A3A3A' -sb '#06D6A0' -sf '#3A3A3A' -fn 'monospace-10' -p 'dmenu prompt &gt;' &"
-bindsym $mod+d exec "rofi -show combi"
 
-bindcode 232 exec light -U 10
-bindcode 233 exec light -A 10
+bindcode 232 exec --no-startup-id light -U 4 &&  dunstify -a "Brightness: " $(printf "%.0f" $(light -G)) -r "10002" -u low
+bindcode 233 exec --no-startup-id light -A 4 &&  dunstify -a "Brightness: " $(printf "%.0f" $(light -G)) -r "10002" -u low
+
+#File Manager
+bindsym $mod+Shift+f exec pcmanfm &
+#Web Browser
+bindsym $mod+Shift+w exec chromium &
 
 #touchpad
-exec --no-startup-id xinput set-int-prop "SYNA32A5:00 06CB:CE17 Touchpad" "libinput Tapping Enabled" 8 1 &
-exec --no-startup-id xinput set-int-prop "SYNA32A5:00 06CB:CE17 Touchpad" "libinput Disable While Typing Enabled" 8 0 &
-exec --no-startup-id xinput set-int-prop "SYNA32A5:00 06CB:CE17 Touchpad" "libinput Natural Scrolling Enabled" 8 1 &
+exec --no-startup-id xinput set-int-prop "SYNA32A5:00 06CB:CE17 Touchpad" "libinput Tapping Enabled" 8 1 
+exec --no-startup-id xinput set-int-prop "SYNA32A5:00 06CB:CE17 Touchpad" "libinput Disable While Typing Enabled" 8 0 
+exec --no-startup-id xinput set-int-prop "SYNA32A5:00 06CB:CE17 Touchpad" "libinput Natural Scrolling Enabled" 8 1 
 
 default_border pixel 3
 focus_follows_mouse false
 
 #set wallpaper
-exec --no-startup-id feh --bg-scale ~/wallpaper/wallpaper.jpg &
+exec --no-startup-id feh --bg-scale ~/.wallpaper.jpg &
+
+#set compositor
+#exec --no-startup-id picom &
+
+#dunst notification manager
+exec --no-startup-id dunst &
+
+#scrot
+bindcode 107 exec scrot -u
 
 #blender
 bindsym $mod+Shift+b exec --no-startup-id /opt/Blender/blender &
 #godot-beta
-bindsym $mod+Shift+g exec --no-startup-id godot-beta &
+bindsym $mod+Shift+g exec --no-startup-id ~/Godot/ver_git/godot/bin/godot.linuxbsd.tools.64 &
