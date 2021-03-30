@@ -1,0 +1,7 @@
+/** Basic config file **/
+
+configuration {
+  theme:		"acpi3.rasi";
+  show-icons:         	true;
+  icon-theme:         	"Papirus";
+}
