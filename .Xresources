@@ -23,7 +23,7 @@ URxvt.geometry:             	90x30
 URxvt.urgentOnBell:         	false
 URxvt.visualBell:           	false
 URxvt.loginShell:           	false
-URxvt.saveLines:            	50
+URxvt.saveLines:            	65535
 URxvt.internalBorder:       	8
 URxvt.lineSpace:            	0
 
