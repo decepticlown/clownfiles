@@ -4,18 +4,18 @@ i3lock \
 	-B 2 \
 	--force-clock \
 	--indicator \
-	--insidevercolor=#2e2e2faa \
-	--insidewrongcolor=#2e2e2faa \
-	--insidecolor=#2e2e2faa \
-	--ringvercolor=#7cbbe6aa \
-	--ringwrongcolor=#be3badaa \
+	--insidevercolor=#2e2e2fff \
+	--insidewrongcolor=#2e2e2fff \
+	--insidecolor=#2e2e2fff \
+	--ringvercolor=#7cbbe6ff \
+	--ringwrongcolor=#be3badff \
 	--ringcolor=#2e2e2f00 \
 	--line-uses-inside \
-	--keyhlcolor=#7cbbe6aa \
-	--bshlcolor=#be3badaa \
-	--separatorcolor=#2e2e2faa \
-	--verifcolor=#7cbbe6aa \
-	--wrongcolor=#be3badaa \
+	--keyhlcolor=#7cbbe6ff \
+	--bshlcolor=#be3badff \
+	--separatorcolor=#01010101 \
+	--verifcolor=#7cbbe6ff \
+	--wrongcolor=#be3badff \
 	--indpos="960:540" \
 	--timecolor=#7cbbe6ff \
 	--timestr="%H:%M" \
@@ -37,10 +37,10 @@ i3lock \
 	--locktext="" \
 	--lockfailedtext="" \
 	--radius 100 \
-	--ring-width 5.0
+	--ring-width 8.0
 
 # Turn the screen off after a delay.
-sleep 15; pgrep i3lock && xset dpms force off
+sleep 150; pgrep i3lock && xset dpms force off
 
 # Hibernate after 15min
 sleep 300; pgrep i3lock && systemctl hibernate
