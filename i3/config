@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: opensans bold 10
+font pango: opensans bold 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -27,7 +27,7 @@ font pango: opensans bold 10
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/scripts/lock.sh --nofork
 
 #manual lock screen
-bindsym $mod+l exec "~/.config/i3/scripts/lock.sh"
+bindsym $mod+l exec sh ~/.config/i3/scripts/lock.sh
 #inactivity lock
 #exec --no-startup-id xautolock -time 5 -locker "~/.config/i3/scripts/lock.sh"
 
@@ -38,8 +38,8 @@ bindsym $mod+l exec "~/.config/i3/scripts/lock.sh"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec ~/.config/i3/volume_plus.sh
-bindsym XF86AudioLowerVolume exec ~/.config/i3/volume_minus.sh
+bindsym XF86AudioRaiseVolume exec sh ~/.config/i3/volume_plus.sh 
+bindsym XF86AudioLowerVolume exec sh ~/.config/i3/volume_minus.sh 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status 
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -55,7 +55,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/launcher.sh
+bindsym $mod+d exec --no-startup-id sh ~/.config/rofi/launcher.sh
 
 #bindsym $mod+d exec "dmenu_run -nf '#BABABA' -nb '#3A3A3A' -sb '#06D6A0' -sf '#3A3A3A' -fn 'monospace-10' -p 'dmenu prompt &gt;' &"
 #
@@ -185,31 +185,31 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # class                 border  bground text    indicator child_border
-client.focused          #202020 #202020 #D0D0D0 #AA0055   #242424
-client.focused_inactive #202020 #202020 #D0D0D0 #555555   #202020
-client.unfocused        #202020 #202020 #D0D0D0 #D0D0D0   #202020
+client.focused          #101010 #101010 #D0D0D0 #AA0055   #101010
+client.focused_inactive #101010 #101010 #D0D0D0 #555555   #101010
+client.unfocused        #101010 #101010 #D0D0D0 #D0D0D0   #101010
 client.urgent           #A00050 #000000 #A00050 #000000   #A00050
-client.placeholder      #000000 #000000 #A0A0A0 #D0D0D0   #000000
+client.placeholder      #101010 #101010 #A0A0A0 #D0D0D0   #101010
 
-client.background       #202020
+client.background       #101010
 bar {
     	separator_symbol "    "
     	position top
-    	status_command i3status
+    	status_command i3status -c $HOME/.config/i3/i3status.conf
     	#mode hide
     	#hidden_state hide
     	#modifier $mod+Shift
 
 colors {
-	background #202020
+	background #101010
    	statusline #A0A0A0
     	separator  #A0A0A0
 
-	focused_workspace  #202020 #202020 #A0A0A0
-    	active_workspace   #202020 #202020 #505050
-    	inactive_workspace #202020 #202020 #404040
-    	urgent_workspace   #202020 #202020 #A00050
-    	binding_mode       #202020 #202020 #A05000
+	focused_workspace  #101010 #101010 #A0A0A0
+    	active_workspace   #101010 #101010 #505050
+    	inactive_workspace #101010 #101010 #404040
+    	urgent_workspace   #101010 #101010 #A00050
+    	binding_mode       #101010 #101010 #A05000
       }
 }
 
@@ -218,9 +218,10 @@ bindcode 232 exec --no-startup-id light -U 4 &&  dunstify -a "Brightness: " $(pr
 bindcode 233 exec --no-startup-id light -A 4 &&  dunstify -a "Brightness: " $(printf "%.0f" $(light -G)) -r "10002" -u low
 
 #File Manager
-bindsym $mod+Shift+f exec urxvt -e ranger
+#bindsym $mod+Shift+f exec your-desired-file-manager 
+
 #Web Browser
-bindsym $mod+Shift+w exec chromium &
+bindsym $mod+Shift+w exec firefox &
 
 #touchpad
 exec --no-startup-id xinput set-int-prop "SYNA32A5:00 06CB:CE17 Touchpad" "libinput Tapping Enabled" 8 1 
@@ -231,7 +232,7 @@ default_border pixel 3
 focus_follows_mouse false
 
 #set wallpaper
-exec --no-startup-id feh --bg-scale ~/.wallpaper.png &
+exec --no-startup-id feh --bg-scale ~/.config/wallpaper.png &
 
 #set compositor
 #exec --no-startup-id picom &
