@@ -15,8 +15,20 @@ deps ( i3 ) :
   - feh
   - ttf-iosevka (AUR)
   - otf-font-awesome
+  - lxappearance
+  - ocs-url (AUR) (optional for downloading and installing the theme files below )
+  - MaterialBreath theme from gnomelooks
+  - MAterial-2-Originals icons from gnomelooks
+  - Qogir-cursors from gnomelooks
 
 deps ( sway  ) :
   - deps ( i3 ) minus { xfce4-terminal, feh, scrot }
   - grimshot (AUR)
   - alacritty
+
+
+## Instalation
+  1. Install `i3` or `sway`
+  2. set themes, icons and cursor with lxappearance
+  3. put the config folder content inside your `.config` folder
+  4. and that's it. Reboot already!
