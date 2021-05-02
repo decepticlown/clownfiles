@@ -1,4 +1,6 @@
 # dotfiles
+![20210502233537_SCREEN](https://user-images.githubusercontent.com/50569653/116823048-ca78db80-ab9f-11eb-933b-414d51ae602f.png)
+![20210502233744_SCREEN](https://user-images.githubusercontent.com/50569653/116823049-cbaa0880-ab9f-11eb-8ffe-fe552be69fad.png)
 
 ### NOTE: package names are from arch repos.
 
@@ -33,8 +35,9 @@ deps ( sway  ) :
 ## Installation
   1. Install `i3` or `sway`
   2. set themes, icons and cursor with lxappearance
-  3. put the config folder content inside your `.config` folder
-  4. and that's it. Reboot already!
+  3. background color for terminal is #1E272E
+  4. put the config folder content inside your `.config` folder
+  5. and that's it. Reboot already!
 
 ### Bugs
 #### Screenshot shutter sound not playing for first activation
