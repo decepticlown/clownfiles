@@ -27,7 +27,7 @@ deps ( sway  ) :
   - alacritty
 
 
-## Instalation
+## Installation
   1. Install `i3` or `sway`
   2. set themes, icons and cursor with lxappearance
   3. put the config folder content inside your `.config` folder
