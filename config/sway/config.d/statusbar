@@ -1,0 +1,27 @@
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position top
+    font pango: Ubuntu Bold 12
+    pango_markup enabled
+    tray_output none
+    icon_theme Material-2-Originals
+    height 32
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while ~/.config/scripts/statusline; do sleep 1; done
+
+    colors {
+        background #1E272EE5
+        statusline #ACACACE5
+
+
+        focused_workspace  #1E272EE5 #1E272EE5 #ACACACE5
+        active_workspace   #1E272EE5 #1E272EE5 #ACACACE5
+        inactive_workspace #1E272EE5 #1E272EE5 #7C7C7CE5
+        urgent_workspace   #1E272EE5 #1E272EE5 #A00050E5
+        binding_mode       #1E272EE5 #1E272EE5 #A05000E5
+    }
+}

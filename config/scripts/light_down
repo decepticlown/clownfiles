@@ -1,0 +1,7 @@
+#!/bin/bash
+light -U 1.0 &&
+	app="System"
+	summary="Brightness decreased to " &&
+	light_level=$(printf "%.0f" $(light -G)) &&
+	body="$summary$light_level"
+	notify-send --urgency=low --expire-time=500 -a $app --icon=system "$body" -h string:x-canonical-private-synchronous:light

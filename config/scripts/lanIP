@@ -1,0 +1,2 @@
+#!/bin/bash
+awk -F" inet " '/inet / { print $2 }' <(ip address) | grep -v "host lo" | grep -v wlan0 | awk -F"/" '{ print $1 }'

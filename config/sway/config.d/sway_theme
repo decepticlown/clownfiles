@@ -1,0 +1,12 @@
+# Wallpaper
+output * bg ~/.config/wallpapers/hillside_road.jpg fill
+
+# Window color theme
+# class                 border	bground text 	indicator child_border
+client.focused          #3E474E #3E474E #D0D0D0 #AA0055   #3E474E
+client.focused_inactive #2E373E #2E373E #D0D0D0 #555555   #2E373E
+client.unfocused        #2E373E #2E373E #D0D0D0 #D0D0D0   #2E373E
+client.urgent           #A00050 #000000 #A00050 #000000   #A00050
+client.placeholder      #101010 #101010 #A0A0A0 #D0D0D0   #101010
+
+default_border pixel 0

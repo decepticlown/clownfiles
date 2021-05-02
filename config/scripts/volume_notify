@@ -1,0 +1,2 @@
+#!/bin/bash
+notify-send -u low -a System "$1" -h string:x-canonical-private-synchronous:volume

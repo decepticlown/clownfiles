@@ -1,0 +1,84 @@
+#!/bin/bash
+
+stat=""
+sep="      "
+
+#### NETWORK ####
+
+LAN_IP=$($HOME/.config/scripts/lanIP)
+LAN=""
+LAN_AVAIL=1
+if [[ $LAN_IP ]]; then
+	LAN=" $LAN_IP"
+	stat=$stat$sep$LAN
+else
+	LAN_AVAIL=0
+fi
+
+WIFI_AVAIL=1
+NET_STAT=$(iwctl station wlan0 show | grep State | awk -F" " '/State/ {print $2}')
+NET_SSID=$(iwctl station wlan0 show | grep "Connected network" | awk -F" " '/Connected network/ {print $3}')
+if [[ $NET_STAT = "connected" ]]
+then
+	NETWORK=" "$NET_SSID
+	stat=$stat$sep$NETWORK
+else
+	WIFI_AVAIL=0
+fi
+
+if [[ $LAN_AVAIL -eq 0 ]] && [[ $WIFI_AVAIL -eq 0 ]]; then
+	stat=$stat$sep" "
+fi
+
+#### BRIGHTNESS ####
+l_level=$($HOME/.config/scripts/light_level)
+LIGHT=" $l_level%"
+stat=$stat$sep$LIGHT
+
+#### VOLUME ####
+v_level=$(pamixer --get-volume)
+if [[ "$(pamixer --get-mute)" == "false" ]]; then
+	VOLUME=" $v_level%"
+	stat=$stat$sep$VOLUME
+else
+	VOLUME=" $v_level%"
+	stat=$stat$sep$VOLUME
+fi
+
+#### BATTERY USAGE ####
+STATUS=$(cat /sys/class/power_supply/BAT0/status)
+LEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
+if [[ $STATUS = "Charging" ]]
+then
+    BATTERY="   "$LEVEL"%"
+    stat=$stat$sep$BATTERY
+else
+	BATTERY=" "$LEVEL"%"
+	stat=$stat$sep$BATTERY
+fi
+
+#### RAM USAGE ####
+RAM_USED=$(echo $(awk -F" " '/Mem:/ {print $3}' <(free -h | grep Mem)) | grep -oP [^i]+ )
+RAM_FREE=$(echo $(awk -F" " '/Mem:/ {print $4}' <(free -h | grep Mem)) | grep -oP [^i]+ )
+RAM_USED_NO=$(awk -F" " '/Mem:/ {print $3}' <(free | grep Mem))
+RAM_FREE_NO=$(awk -F" " '/Mem:/ {print $4}' <(free | grep Mem))
+if [[ $RAM_USED_NO -gt $RAM_FREE_NO ]]
+then
+    RAM=" "$RAM_USED" > "$RAM_FREE
+    stat=$stat$sep$RAM
+else
+    RAM=" "$RAM_USED" | "$RAM_FREE
+    stat=$stat$sep$RAM
+fi
+
+
+#### DATE ####
+DATE=" "$(date '+%Y-%m-%d')
+stat=$stat$sep$DATE
+
+
+#### TIME ####
+TIME=" "$(date '+%I:%M %p')
+stat=$stat$sep$TIME
+
+echo "$stat  "

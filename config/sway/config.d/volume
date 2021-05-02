@@ -1,0 +1,3 @@
+bindcode 123 exec ~/.config/scripts/volume_plus &
+bindcode 122 exec ~/.config/scripts/volume_minus &
+bindcode 121 exec pamixer -t &

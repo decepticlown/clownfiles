@@ -1,0 +1,3 @@
+bindsym Print exec ~/.config/scripts/screenshot/sway_screen
+bindsym Shift+Print exec ~/.config/scripts/screenshot/sway_active
+bindsym $mod+Print exec ~/.config/scripts/screenshot/sway_region

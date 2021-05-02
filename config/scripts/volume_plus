@@ -1,0 +1,15 @@
+#!/bin/bash
+
+notify="$HOME/.config/scripts/volume_notify"
+v="pamixer --get-volume"
+m="pamixer --get-mute"
+
+if [[ $(exec $v) -lt 100 ]]; then
+	pamixer -i 5 &&
+		$notify "Volume increased to $(exec $v)" ||
+		$notify "Failed to increase volume" &&
+		pamixer -u
+else
+	$notify "Volume is maximum"
+fi
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+#echo $(($(awk -F" /" '/front-left:/ { print $2 }' <(pactl list sinks) | tail -n $(( $SINK +1))  | tr -dc '0-9') + 0))
+pamixer --get-volume

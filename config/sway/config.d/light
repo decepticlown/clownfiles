@@ -1,0 +1,2 @@
+bindcode 232 exec ~/.config/scripts/light_down
+bindcode 233 exec ~/.config/scripts/light_up
