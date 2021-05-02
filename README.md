@@ -1,6 +1,6 @@
 # dotfiles
 
-deps:
+deps (i3) :
   - scrot
   - light
   - pipewire
@@ -13,3 +13,8 @@ deps:
   - thunar
   - feh
   - ttf-iosevka (AUR)
+
+deps (sway) :
+  - deps (i3) minus {xfce4-terminal, feh, scrot}
+  - grimshot (AUR)
+  - alacritty
