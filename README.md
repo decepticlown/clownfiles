@@ -2,6 +2,7 @@
 
 deps ( i3 ) :
   - scrot
+  - dunst
   - light
   - pipewire
   - pipewire-pulse
@@ -13,6 +14,7 @@ deps ( i3 ) :
   - thunar
   - feh
   - ttf-iosevka (AUR)
+  - otf-font-awesome
 
 deps ( sway  ) :
   - deps ( i3 ) minus { xfce4-terminal, feh, scrot }
