@@ -3,6 +3,7 @@
 ![20210502233744_SCREEN](https://user-images.githubusercontent.com/50569653/116823049-cbaa0880-ab9f-11eb-8ffe-fe552be69fad.png)
 
 ### NOTE: package names are from arch repos.
+### NOTE: Xresource is not part of the config its from old urxvt setup. Still you can use it.
 
 deps ( i3 ) :
   - scrot
