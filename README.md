@@ -19,6 +19,7 @@ deps ( i3 ) :
   - thunar
   - feh
   - i3lock-color (AUR)
+  - ttf-ubuntu-font-family
   - ttf-iosevka (AUR)
   - otf-font-awesome
   - lxappearance
