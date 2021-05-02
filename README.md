@@ -1,5 +1,7 @@
 # dotfiles
 
+### NOTE: package names are from arch repos.
+
 deps ( i3 ) :
   - scrot
   - dunst
