@@ -37,8 +37,9 @@ deps ( sway  ) :
   1. Install `i3` or `sway`
   2. set themes, icons and cursor with lxappearance
   3. background color for terminal is #1E272E
-  4. put the config folder content inside your `.config` folder
-  5. and that's it. Reboot already!
+  4. set terminal font to `Iosevka Extended`
+  5. put the config folder content inside your `.config` folder
+  6. and that's it. Reboot already!
 
 ### Bugs
 #### Screenshot shutter sound not playing for first activation
