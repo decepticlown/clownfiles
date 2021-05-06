@@ -7,6 +7,7 @@
 
 deps ( i3 ) :
   - scrot
+  - rofi
   - dunst
   - light
   - pipewire
