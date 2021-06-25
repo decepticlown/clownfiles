@@ -4,6 +4,7 @@
 
 ### NOTE: package names are from arch repos.
 ### NOTE: Xresource is not part of the config its from old urxvt setup. Still you can use it.
+### NOTE: If statusline shows error try `chmod -R +x scripts/*`
 
 deps ( i3 ) :
   - scrot
