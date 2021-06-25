@@ -17,9 +17,9 @@ Xft.hintstyle:              	hintslight
 
 URxvt.depth:                	32
 URxvt.geometry:             	90x30
-! URxvt.transparent:          	true
-! URxvt.shading:               	20
-! URxvt.fading:               	0
+! URxvt.transparent:          true
+! URxvt.shading:              20
+! URxvt.fading:               0
 URxvt.urgentOnBell:         	false
 URxvt.visualBell:           	false
 URxvt.loginShell:           	false
@@ -29,10 +29,10 @@ URxvt.lineSpace:            	0
 
 ! Fonts
 URxvt.allow_bold:           	true
-URxvt.font: 			xft:Iosevka:style=Regular:size=10
-URxvt.boldFont: 		xft:Iosevka:style=Bold:size=10
-URxvt.italicFont: 		xft:Iosevka:style=Italic:size=10
-URxvt.boldItalicFont: 		xft:Iosevka:style=Bold Italic:size=10
+URxvt.font: 			            xft:Iosevka:style=Regular:size=10
+URxvt.boldFont: 		          xft:Iosevka:style=Bold:size=10
+URxvt.italicFont: 		        xft:Iosevka:style=Italic:size=10
+URxvt.boldItalicFont: 		    xft:Iosevka:style=Bold Italic:size=10
 
 ! Fix font space
 URxvt*letterSpace:          	0
@@ -55,38 +55,38 @@ URxvt.cursorUnderline:      	false
 URxvt.pointerBlank:         	true
 
 ! special
-*.foreground:   #a0a0a0
-*.background:   #202020
-*.cursorColor:  #a0a0a0
+*.foreground:   #9ea7a6
+*.background:   #232c31
+*.cursorColor:  #9ea7a6
 
 ! black
-*.color0:       #202020
-*.color8:       #a0a0a0
+*.color0:       #232c31
+*.color8:       #3f4944
 
 ! red
-*.color1:       #ffaa00
-*.color9:       #ffaa00
+*.color1:       #2a5491
+*.color9:       #2a5491
 
 ! green
-*.color2:       #50a000
-*.color10:      #50a000
+*.color2:       #237986
+*.color10:      #237986
 
 ! yellow
-*.color3:       #a00050
-*.color11:      #a00050
+*.color3:       #a03b1e
+*.color11:      #a03b1e
 
 ! blue
-*.color4:       #0050a0
-*.color12:      #0050a0
+*.color4:       #484d79
+*.color12:      #484d79
 
 ! magenta
-*.color5:       #a05000
-*.color13:      #a05000
+*.color5:       #c59820
+*.color13:      #c59820
 
 ! cyan
-*.color6:       #005050
-*.color14:      #005050
+*.color6:       #b02f30
+*.color14:      #b02f30
 
 ! white
-*.color7:       #a0a0a0
-*.color15:      #00a0a0
+*.color7:       #9ea7a6
+*.color15:      #b5d8f6
